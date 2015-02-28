@@ -7,7 +7,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "url": "FuturespaceIO/futurespace.git",
+  "repository": "FuturespaceIO/futurespace.git",
   "author": "Fangdun Cai <cfddream@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^0.18.0"
+  }
 }
