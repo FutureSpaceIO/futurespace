@@ -5,12 +5,15 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": "FuturespaceIO/futurespace.git",
   "author": "Fangdun Cai <cfddream@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "trek": "git://github.com/trekjs/trek#dev"
+  },
+  "engines": {
+    "iojs": "1.x.x"
   }
 }
