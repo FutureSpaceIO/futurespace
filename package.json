@@ -11,6 +11,6 @@
   "author": "Fangdun Cai <cfddream@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "koa": "^0.18.0"
+    "trek": "git://github.com/trekjs/trek#dev"
   }
 }
