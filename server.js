@@ -1,9 +1,13 @@
-var Trek = require('trek');
+import Trek from 'trek';
 
-var app = new Trek();
+var app = new Trek(__dirname);
 
-app.get('/', function* () {
-  this.body = 'Star Trek!';
+app.get('/', function* (next) {
+  this.body = 'Hello Trek.js!';
 });
 
-app.listen(process.env.PORT || 3000);
+app.on('error', function (err, context) {
+  app.logger.error(err);
+});
+
+app.run();
