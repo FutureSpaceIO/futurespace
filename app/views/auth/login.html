@@ -18,8 +18,16 @@
       <div class="form-group">
         <input type="password" class="form-control" name="user[password]" placeholder="Password">
       </div>
-      <button type="submit" class="btn btn-default btn-block" role="button">Sign in</button>
+      <button type="submit" class="btn btn-default btn-block">Sign in</button>
     </form>
+    {% if providers %}
+    <div class="center-block">
+      <h6>Sign in with:</h6>
+      {% for provider in providers %}
+      <a class="btn btn-default text-capitalize" href="/auth/{{provider}}" role="button">{{provider}}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

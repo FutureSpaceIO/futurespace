@@ -30,14 +30,15 @@ export default (sequelize, DataTypes) => {
       }
     },
 
+    // If want to allow oauth, maybe `password_hash` and `salt` are not need.
     password_hash: {
       type: DataTypes.STRING(64),
-      allowNull: false
+      // allowNull: false
     },
 
     salt: {
       type: DataTypes.STRING(32),
-      allowNull: false
+      // allowNull: false
     },
 
     admin: {
@@ -91,7 +92,7 @@ export default (sequelize, DataTypes) => {
     underscored: true,
     classMethods: {
       associate(models) {
-          //User.hasMany(models.Passport);
+        User.hasMany(models.Passport);
       },
 
       findByUsernameOrEmail(identifier) {

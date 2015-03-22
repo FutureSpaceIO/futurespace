@@ -6,7 +6,8 @@ export default {
   // show: Log in
   * login() {
     yield this.render('auth/login', {
-      errors: this.flash('error')
+      errors: this.flash('error'),
+      providers: this.config.get('passport.providers')
     });
   },
 

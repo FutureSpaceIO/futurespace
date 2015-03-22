@@ -18,6 +18,10 @@ export default (config) => {
   });
 
   config.set('passport', {
+    providers: [
+      'twitter',
+      'github'
+    ],
 
     strategies: {
       local: {
