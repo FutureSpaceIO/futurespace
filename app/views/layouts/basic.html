@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}My Site{% endblock %}</title>
+
+  {% block head %}
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/main.css">
+  {% endblock %}
+</head>
+<body>
+
+  <header></header>
+
+  <div class="container-fluid" role="main">
+  {% block content %}{% endblock %}
+  </div>
+
+  <footer></footer>
+</body>
+</html>

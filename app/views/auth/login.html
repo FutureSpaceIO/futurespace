@@ -1,0 +1,25 @@
+{% extends '../layouts/basic.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="auth-page">
+    {% if errors && errors.length %}
+    <div class="contextual">
+      {% for error in errors %}
+      <p class="bg-danger">{{ error.message }}</p>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <h2>FutureSpace.IO</h2>
+    <form accept-charset="UTF-8" action="/auth/local" method="post">
+      <div class="form-group">
+        <input type="text" class="form-control" name="user[identifier]" placeholder="Username or Email">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="user[password]" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-default btn-block" role="button">Sign in</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
