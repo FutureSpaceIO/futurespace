@@ -96,14 +96,22 @@ export default (sequelize, DataTypes) => {
       },
 
       findByUsernameOrEmail(identifier) {
-        return UserModel.find({
-          where: {
-            $or: {
-              username: identifier,
-              email: identifier
-            }
-          }
-        });
+        let where = {};
+        // ~~~'1@1'.indexOf('@') !== 0
+        if (~~~identifier.indexOf('@')) {
+          where.email = identifier;
+        } else {
+          where.username = identifier;
+        }
+        return User.find({ where: where });
+      },
+
+      findByEmail(email) {
+        return User.find({ where: { email: email } });
+      },
+
+      findByUsername(username) {
+        return User.find({ where: { username: username } });
       },
 
       salt() {
