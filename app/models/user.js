@@ -57,11 +57,17 @@ export default (sequelize, DataTypes) => {
     },
 
     active: {
-      type: DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
     },
 
     name: {
       type: DataTypes.STRING
+    },
+
+    locale: {
+      type: DataTypes.STRING(10)
     },
 
     // biography
@@ -85,6 +91,10 @@ export default (sequelize, DataTypes) => {
 
     company: {
       type: DataTypes.STRING
+    },
+
+    ip_address: {
+      type: 'inet'
     }
 
   }, {
