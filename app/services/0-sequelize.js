@@ -40,8 +40,8 @@ export default (app, config) => {
       db.sequelize = sequelize;
       db.Sequelize = Sequelize;
 
-      //return yield sequelize.sync({ force: env !== 'production' });
-      return yield sequelize.sync();
+      // return yield sequelize.sync({ force: env !== 'production' });
+      return yield sequelize.sync({});
     })
 
   return db;
