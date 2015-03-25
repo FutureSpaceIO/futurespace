@@ -49,7 +49,6 @@ export default (app, config) => {
       },
 
       login: function(req, identifier, password, done) {
-
         co(function*() {
             let user = yield UserModel.findByUsernameOrEmail(identifier);
             if (user && yield UserModel.compare(user.password_hash, password, user.salt)) {
@@ -65,7 +64,6 @@ export default (app, config) => {
             done(err, false);
             app.logger.error(chalk.bold.red(err));
           });
-
       }
     },
 
@@ -73,7 +71,9 @@ export default (app, config) => {
       var query = {
         identifier: profile.id,
         protocol: 'oauth',
-        tokens: { token: token }
+        tokens: {
+          token: token
+        }
       };
       if (tokenSecret) {
         query.tokens.tokenSecret = tokenSecret;
@@ -86,7 +86,9 @@ export default (app, config) => {
       var query = {
         identifier: profile.id,
         protocol: 'oauth2',
-        tokens: { accessToken: accessToken }
+        tokens: {
+          accessToken: accessToken
+        }
       };
       if (refreshToken) {
         query.tokens.refreshToken = refreshToken;
@@ -96,7 +98,6 @@ export default (app, config) => {
     }
 
   };
-
 
   Object.defineProperties(passport, {
 
@@ -134,8 +135,8 @@ export default (app, config) => {
 
                   case 'openid':
                     options.returnURL = url.resolve(baseUrl, callback);
-                    options.realm     = baseUrl;
-                    options.profile   = true;
+                    options.realm = baseUrl;
+                    options.profile = true;
                 }
                 this.use(new Strategy(
                   options,
@@ -159,11 +160,14 @@ export default (app, config) => {
     },
 
     connect: {
-      value: function (req, query, profile, next) {
-        var user = {}, provider;
+      value: function(req, query, profile, next) {
+        var user = {},
+          provider;
 
         // Get the authentication provider from the request.
-        query.provider = req.ctx.params.provider || req.query && req.query.provider || req.body && req.body.provider;
+        query.provider = req.ctx.params.provider
+          || (req.query && req.query.provider)
+          || (req.body && req.body.provider);
 
         // Use profile.provider or fallback to the query.provider if it is undefined
         // as is the case for OpenID, for example
@@ -189,20 +193,17 @@ export default (app, config) => {
         // have a way of identifying the user in the future. Throw an error and let
         // whoever's next in the line take care of it.
         if (!user.username && !user.email) {
-          return next(new Error('Neither a username nor email was available'));
+          return next(new Error('Neither a username or email was available'));
         }
 
         console.log(query, provider)
-        co(function* () {
+        co(function*() {
           let __passport = yield PassportModel.findOne({
             where: {
               provider: provider,
-              identifier: query.identifier.toString()
+              identifier: query.identifier
             }
           });
-          if (!__passport) {
-
-          }
           console.log(__passport, req.user)
         }).catch(next)
       }
