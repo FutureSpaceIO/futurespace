@@ -47,15 +47,16 @@ export default {
           yield ctx.login(user);
           return ctx.redirect('/');
         }
+        if (!user && info) return tryAgain(info);
         if (err) return tryAgain(err);
+        if (!err) return tryAgain(new Error('Something was wrong.'));
       }).call(this, next);
     } catch (e) {
-      this.logger.error('error', e && e.stack)
+      this.logger.error(e && e.stack)
       return tryAgain(e);
     }
 
     function tryAgain(err) {
-      let action = ctx.params.action;
       if (action === 'register' && err && err.name === 'ValidationError') {
         err = _.filter(err.details, 'message');
         err = _.compact([
@@ -64,6 +65,12 @@ export default {
           _.find(err, 'path', 'password')
         ]);
       }
+      /**
+       * error format:
+       *  { message: ''}
+       * errors:
+       *  [ error, error ]
+       */
       ctx.flash('error', err);
       switch (action) {
         case 'register':
