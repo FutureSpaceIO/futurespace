@@ -9,6 +9,8 @@ export default (routeMapper) => {
 
     .get('signout', { to: 'auth#signout' })
 
+    //.get('forgot')
+
     .post('auth/local', { to: 'auth#callback' })
     .post('auth/local/:action', { to: 'auth#callback' })
 

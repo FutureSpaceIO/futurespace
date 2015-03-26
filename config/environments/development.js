@@ -19,8 +19,8 @@ export default (config) => {
 
   config.set('passport', {
     providers: [
-      'twitter',
-      'github'
+      'Twitter',
+      'GitHub'
     ],
 
     strategies: {
