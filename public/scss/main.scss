@@ -2,3 +2,18 @@
   max-width: 350px;
   margin: 0 auto 50px;
 }
+
+.hr-line {
+  border: none;
+  border-top: 1px solid #ededed;
+  text-align: center;
+  margin: 24px 0;
+  > legend {
+    font-size: 1em;
+    padding: 0 12px;
+    margin: 0 auto;
+    color: #8b909a;
+    border-bottom: 0;
+    width: auto;
+  }
+}
