@@ -10,8 +10,23 @@
       {% endfor %}
     </div>
     {% endif %}
+
     <h2>FutureSpace.IO</h2>
+    <h5 class="text-center">Sign in with:</h6>
+    {% if providers %}
+    <div class="center-block">
+      {% for provider in providers %}
+      <a class="btn btn-default btn-block text-capitalize" href="/auth/{{provider | lower }}" role="button">
+        <i class="fa fa-{{provider | lower }}"></i>
+        {{provider}}
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
     <form accept-charset="UTF-8" action="/auth/local" method="post">
+      <fieldset class="hr-line">
+        <legend align="center">OR</legend>
+      </fieldset>
       <div class="form-group">
         <input type="text" class="form-control" name="user[identifier]" placeholder="Username or Email">
       </div>
@@ -19,16 +34,10 @@
         <input type="password" class="form-control" name="user[password]" placeholder="Password">
       </div>
       <button type="submit" class="btn btn-default btn-block">Sign in</button>
+      <div>
+        <a href="#">Forgot your password?</a>
+      </div>
     </form>
-    <p><a href="#">Forgot your password?</a></p>
-    {% if providers %}
-    <div class="center-block">
-      <h6>Sign in with:</h6>
-      {% for provider in providers %}
-      <a class="btn btn-default text-capitalize" href="/auth/{{provider}}" role="button">{{provider}}</a>
-      {% endfor %}
-    </div>
-    {% endif %}
   </div>
 </div>
 {% endblock %}

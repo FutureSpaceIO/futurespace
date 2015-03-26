@@ -10,8 +10,23 @@
       {% endfor %}
     </div>
     {% endif %}
+
     <h2>FutureSpace.IO</h2>
+    <h5 class="text-center">Sign up with:</h6>
+    {% if providers %}
+    <div class="center-block">
+      {% for provider in providers %}
+      <a class="btn btn-default btn-block text-capitalize" href="/auth/{{provider | lower }}" role="button">
+        <i class="fa fa-{{provider | lower }}"></i>
+        {{provider}}
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
     <form accept-charset="UTF-8" action="/auth/local/register" method="post">
+      <fieldset class="hr-line">
+        <legend align="center">OR</legend>
+      </fieldset>
       <div class="form-group">
         <input type="text" class="form-control" name="username" placeholder="Username" value="{{ username }}">
       </div>
