@@ -15,7 +15,8 @@ export default {
   // show: Sign up
   * signup() {
     yield this.render('auth/signup', {
-      errors: this.flash('error')
+      errors: this.flash('error'),
+      providers: this.config.get('passport.providers')
     });
   },
 

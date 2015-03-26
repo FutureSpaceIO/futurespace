@@ -201,10 +201,38 @@ export default (app, config) => {
           let __passport = yield PassportModel.findOne({
             where: {
               provider: provider,
-              identifier: query.identifier
+              identifier: query.identifier.toString()
             }
           });
-          console.log(__passport, req.user)
+          console.log(__passport, req.user);
+          if (!req.user) {
+            // Scenario: A new user is attempting to sign up using a third-party
+            //           authentication provider.
+            // Action:   Create a new user and assign them a passport.
+            if (!__passport) {
+              console.log(user)
+              user = yield UserModel.build(user).save();
+              query.user_id = user.id;
+
+              __passport = yield PassportModel.build(query).save();
+              console.log(user, __passport);
+            } else {
+              if (query.hasOwnProperty('tokens') && query.tokens !== __passport.tokens) {
+                __passport.tokens = query.tokens;
+              }
+              yield __passport.save();
+
+              UserModel.findOne(__passport.user_id).complete(next);
+            }
+          } else {
+            // Scenario: A user is currently logged in and trying to connect a new
+            //           passport.
+            // Action:   Create and assign a new passport to the user.
+            if (__passport) {
+              query.user_id = req.user.id;
+              PassportModel.build(query).save().complete(next);
+            }
+          }
         }).catch(next)
       }
     },
