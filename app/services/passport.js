@@ -34,18 +34,21 @@ export default (app, config) => {
 
     local: {
 
-      register: function*(next) {
-        let o = _.pick(this.request.body, 'email', 'username', 'password');
-        let result = UserModel.validate(o);
-        if (result.error) throw result.error;
-        let salt = yield UserModel.salt();
-        let password_hash = yield UserModel.hash(o.password, salt);
-        return yield UserModel.create({
-          username: o.username,
-          email: o.email,
-          salt: salt,
-          password_hash: password_hash
-        });
+      register: function(done) {
+        return function* register() {
+          let o = _.pick(this.request.body, 'email', 'username', 'password');
+          let result = UserModel.validate(o);
+          if (result.error) throw result.error;
+          let salt = yield UserModel.salt();
+          let password_hash = yield UserModel.hash(o.password, salt);
+          let user = yield UserModel.create({
+            username: o.username,
+            email: o.email,
+            salt: salt,
+            password_hash: password_hash
+          });
+          yield done(null, user);
+        };
       },
 
       login: function(req, identifier, password, done) {
@@ -211,7 +214,9 @@ export default (app, config) => {
                 // Action:   Create a new user and assign them a passport.
               if (!__passport) {
                 console.log('!passport')
-                let __user = yield UserModel.findOrCreate({ where: user });
+                let __user = yield UserModel.findOrCreate({
+                  where: user
+                });
                 query.user_id = __user.id;
                 query.profile = profile._json;
                 _.defaults(query, user);
@@ -265,7 +270,7 @@ export default (app, config) => {
       value: function(ctx, provider = 'local', action, next) {
         if (provider === 'local' && action) {
           if (action === 'register' && !ctx.user) {
-            return protocols.local.register;
+            return protocols.local.register(next);
           } else if (action === 'connect' && ctx.user) {
 
           } else if (action === 'disconnect' && ctx.user) {
