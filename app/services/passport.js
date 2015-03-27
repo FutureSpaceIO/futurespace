@@ -40,12 +40,12 @@ export default (app, config) => {
         if (result.error) throw result.error;
         let salt = yield UserModel.salt();
         let password_hash = yield UserModel.hash(o.password, salt);
-        return yield UserModel.build({
+        return yield UserModel.create({
           username: o.username,
           email: o.email,
           salt: salt,
           password_hash: password_hash
-        }).save();
+        });
       },
 
       login: function(req, identifier, password, done) {
@@ -147,7 +147,7 @@ export default (app, config) => {
                 ));
             }
           } catch (e) {
-            app.logger.error(`Missing passport-${key}, ${e.stack}`);
+            app.logger.error(`Missing passport-${key}.`);
           }
         });
       }
@@ -165,9 +165,7 @@ export default (app, config) => {
           provider;
 
         // Get the authentication provider from the request.
-        query.provider = req.ctx.params.provider
-          || (req.query && req.query.provider)
-          || (req.body && req.body.provider);
+        query.provider = req.ctx.params.provider || (req.query && req.query.provider) || (req.body && req.body.provider);
 
         // Use profile.provider or fallback to the query.provider if it is undefined
         // as is the case for OpenID, for example
@@ -181,7 +179,9 @@ export default (app, config) => {
 
         // If the profile object contains a list of emails, grab the first one and
         // add it to the user.
-        if (_.has(profile, 'email')) {
+        if (_.has(profile, 'emails')) {
+          user.email = profile.emails[0].value;
+        } else if (_.has(profile, 'email')) {
           user.email = profile.email;
         }
         // If the profile object contains a username, add it to the user.
@@ -198,42 +198,46 @@ export default (app, config) => {
 
         console.log(query, provider)
         co(function*() {
-          let __passport = yield PassportModel.findOne({
-            where: {
-              provider: provider,
-              identifier: query.identifier.toString()
-            }
-          });
-          console.log(__passport, req.user);
-          if (!req.user) {
-            // Scenario: A new user is attempting to sign up using a third-party
-            //           authentication provider.
-            // Action:   Create a new user and assign them a passport.
-            if (!__passport) {
-              console.log(user)
-              user = yield UserModel.build(user).save();
-              query.user_id = user.id;
-
-              __passport = yield PassportModel.build(query).save();
-              console.log(user, __passport);
-            } else {
-              if (query.hasOwnProperty('tokens') && query.tokens !== __passport.tokens) {
-                __passport.tokens = query.tokens;
+            let __passport = yield PassportModel.findOne({
+              where: {
+                provider: provider,
+                identifier: query.identifier.toString()
               }
-              yield __passport.save();
+            });
+            if (!req.user) {
+              console.log('!req.user')
+                // Scenario: A new user is attempting to sign up using a third-party
+                //           authentication provider.
+                // Action:   Create a new user and assign them a passport.
+              if (!__passport) {
+                console.log('!passport')
+                let __user = yield UserModel.findOrCreate(user);
+                query.user_id = __user.id;
+                query.profile = profile._json;
+                _.defaults(query, user);
+                yield PassportModel.create(query);
 
-              UserModel.findOne(__passport.user_id).complete(next);
+                next(null, __user);
+              } else {
+                _.defaults(query, user);
+                yield __passport.update(query);
+
+                let __user = yield UserModel.findOne(__passport.user_id);
+                next(null, __user);
+              }
+            } else {
+              // Scenario: A user is currently logged in and trying to connect a new
+              //           passport.
+              // Action:   Create and assign a new passport to the user.
+              if (__passport) {
+                query.user_id = req.user.id;
+                query.profile = profile._json;
+                _.defaults(query, user);
+                yield __passport.update(query);
+              }
+              next(null, req.user);
             }
-          } else {
-            // Scenario: A user is currently logged in and trying to connect a new
-            //           passport.
-            // Action:   Create and assign a new passport to the user.
-            if (__passport) {
-              query.user_id = req.user.id;
-              PassportModel.build(query).save().complete(next);
-            }
-          }
-        }).catch(next)
+          }) //.catch(next)
       }
     },
 

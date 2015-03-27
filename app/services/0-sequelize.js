@@ -5,16 +5,21 @@ import thenify from 'thenify';
 import Sequelize from 'sequelize';
 
 export default (app, config) => {
+  let sequelize     = null;
   let env           = app.env;
   let dbConfigPath  = config.paths.get('config/database').path;
   let dbConfig      = require(dbConfigPath)[env];
   if (dbConfig.logging) dbConfig.logging = app.logger.info;
-  let sequelize     = new Sequelize(
-    dbConfig.database,
-    dbConfig.username,
-    dbConfig.password,
-    dbConfig
-  );
+  if (dbConfig.url) {
+    sequelize = new Sequelize(dbConfig.url, dbConfig);
+  } else {
+    sequelize = new Sequelize(
+      dbConfig.database,
+      dbConfig.username,
+      dbConfig.password,
+      dbConfig
+    );
+  }
   let modelsPath    = config.paths.get('app/models').path;
   let db = Object.create(null);
 

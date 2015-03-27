@@ -30,11 +30,6 @@ export default (config) => {
           usernameField: 'user[identifier]',
           passwordField: 'user[password]',
           passReqToCallback: true // allows us to pass back the entire request to the callback
-        },
-        authenticate: {
-          // successRedirect: '/',
-          // failureRedirect: '/login',
-          // failureFlash: true
         }
       },
       bearer: {},
@@ -44,11 +39,6 @@ export default (config) => {
           consumerKey: config.env.TWITTER_CONSUMER_KEY,
           consumerSecret: config.env.TWITTER_CONSUMER_SECRET,
           callbackURL: '/auth/twitter/callback'
-        },
-        authenticate: {
-          // successRedirect: '/',
-          // failureRedirect: '/login',
-          // failureFlash: true
         }
       },
       github: {
@@ -58,11 +48,6 @@ export default (config) => {
           clientID: config.env.GITHUB_CLIENT_ID,
           clientSecret: config.env.GITHUB_CLIENT_SECRET,
           callbackURL: '/auth/github/callback'
-        },
-        authenticate: {
-          // successRedirect: '/',
-          // failureRedirect: '/login',
-          // failureFlash: true
         }
       },
       digitalocean: {
@@ -73,16 +58,9 @@ export default (config) => {
           userProfileURL: 'https://api.digitalocean.com/v2/account',
           callbackURL: '/auth/digitalocean/callback'
         },
-        authenticate: {
-          // successRedirect: '/',
-          // failureRedirect: '/login',
-          // failureFlash: true
-        },
         filter: (req, accessToken, refreshToken, profile, next) => {
           profile.id = profile._json.account.uuid;
           profile.email = profile._json.account.email;
-          console.dir(profile)
-          console.log('digitalocean filter')
           return [req, accessToken, refreshToken, profile, next];
         }
       },
@@ -92,11 +70,6 @@ export default (config) => {
           consumerKey: config.env.BITBUCKET_CONSUMER_KEY,
           consumerSecret: config.env.BITBUCKET_CONSUMER_SECRET,
           callbackURL: '/auth/bitbucket/callback'
-        },
-        authenticate: {
-          // successRedirect: '/',
-          // failureRedirect: '/login',
-          // failureFlash: true
         }
       }
     }

@@ -54,6 +54,7 @@ export default {
       }).call(this, next);
     } catch (e) {
       this.logger.error(e && e.stack)
+      console.log('ctxxxxx');
       return tryAgain(e);
     }
 
