@@ -10,8 +10,10 @@ export default (app, config) => {
   let dbConfigPath  = config.paths.get('config/database').path;
   let dbConfig      = require(dbConfigPath)[env];
   if (dbConfig.logging) dbConfig.logging = app.logger.info;
-  if (dbConfig.url) {
-    sequelize = new Sequelize(dbConfig.url, dbConfig);
+  let url           = dbConfig.url;
+  delete dbConfig.url;
+  if (url) {
+    sequelize = new Sequelize(url, dbConfig);
   } else {
     sequelize = new Sequelize(
       dbConfig.database,

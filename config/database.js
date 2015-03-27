@@ -1,6 +1,7 @@
 export default {
 
   "development": {
+    "url": `${process.env.DATABASE_URL || ''}`,
     "username": "trek",
     "password": "star trek",
     "database": "trek",
@@ -24,6 +25,7 @@ export default {
   },
 
   "test": {
+    "url": `${process.env.DATABASE_URL || ''}`,
     "username": "root",
     "password": null,
     "database": "database_test",
@@ -32,7 +34,7 @@ export default {
   },
 
   "production": {
-    "url": `${process.env.DATABASE_URL}`,
+    "url": `${process.env.DATABASE_URL || ''}`,
     "username": `${process.env.DATABASE_USERNAME}`,
     "password": `${process.env.DATABASE_PASSWORD}`,
     "database": `${process.env.DATABASE_DATABASE}`,
