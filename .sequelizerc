@@ -1,0 +1,8 @@
+var fs = require('fs');
+var path = require('path')
+
+module.exports = {
+  babel: true,
+  'config': path.resolve('config', 'database.js'),
+  'models-path': path.resolve('app', 'models')
+};
