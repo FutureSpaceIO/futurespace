@@ -93,6 +93,7 @@ export default (sequelize, DataTypes) => {
   }, {
     tableName: 'passports',
     underscored: true,
+    paranoid: true,
     classMethods: {
       associate: function(models) {
         Passport.belongsTo(models.User);

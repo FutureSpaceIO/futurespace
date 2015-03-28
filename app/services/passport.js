@@ -51,6 +51,34 @@ export default (app, config) => {
         };
       },
 
+      connect: function(done) {
+        return function* connect() {
+          let user = this.user;
+          let __passport;
+
+          try {
+            __passport = PassportModel.findOne({
+              where: {
+                protocol: 'local',
+                user_id: user.id
+              }
+            });
+
+            if (!__passport) {
+              yield PassportModel.create({
+                protocol: 'local',
+                user_id: user.id
+              });
+            }
+
+            yield done(null, user);
+          } catch (err) {
+            yield done(err, null);
+          }
+
+        };
+      },
+
       login: function(req, identifier, password, done) {
         co(function*() {
             let user = yield UserModel.findByUsernameOrEmail(identifier);
@@ -247,8 +275,22 @@ export default (app, config) => {
     },
 
     disconnect: {
-      value: function*(next) {
+      value: function(done) {
+        return function* disconnect() {
+          let user = this.user;
+          let provider = this.params.provider;
 
+          let __passport = yield PassportModel.findOne({
+            where: {
+              user_id: user.id,
+              provider: provider
+            }
+          });
+
+          // Maybe do not really destory, just add a flag, likes: `delete_at`.
+          yield __passport.destroy();
+          yield done(null, user);
+        }
       }
     },
 
@@ -272,13 +314,14 @@ export default (app, config) => {
           if (action === 'register' && !ctx.user) {
             return protocols.local.register(next);
           } else if (action === 'connect' && ctx.user) {
-
+            return protocols.local.connect(next);
           } else if (action === 'disconnect' && ctx.user) {
-
+            return this.disconnect(next);
+            // return protocols.local.disconnect(next);
           }
         } else {
           if (action === 'disconnect' && ctx.user) {
-            return this.disconnect();
+            return this.disconnect(next);
           } else {
             console.log(provider, action);
             return this.authenticate(provider, next);

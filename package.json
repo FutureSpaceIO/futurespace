@@ -20,6 +20,7 @@
     "pg-hstore": "^2.3.1",
     "pg-native": "^1.8.0",
     "sequelize": "^2.0.5",
+    "sequelize-cli": "git://github.com/fundon/cli#es6_syntax_by_babel",
     "thenify": "^3.1.0",
     "trek": "0.0.10-dev"
   },

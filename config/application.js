@@ -12,4 +12,8 @@ export default (config) => {
     root: config.viewsPath
   }, true);
 
+  config.set('lusca', {
+    csrf: true
+  });
+
 };
