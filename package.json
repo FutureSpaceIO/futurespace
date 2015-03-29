@@ -13,6 +13,7 @@
     "glob": "^5.0.3",
     "koa-load-middlewares": "^1.0.0",
     "lodash-node": "^3.6.0",
+    "passport-facebook": "^2.0.0",
     "passport-github": "^0.1.5",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.3",
@@ -22,7 +23,7 @@
     "sequelize": "^2.0.5",
     "sequelize-cli": "git://github.com/fundon/cli#es6_syntax_by_babel",
     "thenify": "^3.1.0",
-    "trek": "0.0.10-dev"
+    "trek": "0.0.12-dev"
   },
   "engines": {
     "iojs": "1.x.x"
