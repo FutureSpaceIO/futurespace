@@ -1,5 +1,7 @@
 // development
 
+import _ from 'lodash-node';
+
 export default (config) => {
 
   config.set('views', {
@@ -59,6 +61,18 @@ export default (config) => {
           clientID: config.env.FACEBOOK_CLIENT_ID,
           clientSecret: config.env.FACEBOOK_CLIENT_SECRET,
           callbackURL: '/auth/facebook/callback'
+        },
+        filter: (req, accessToken, refreshToken, profile, next) => {
+          // Facebook remove the `username` field in the latest API.
+          if (!profile.username) {
+            if(profile.displayName) {
+              profile.username = _.kebabCase(profile.displayName);
+            } else (profile.name) {
+              let name = _.compact(_.pick(profile.name, 'givenName', 'middleName',  'familyName'));
+              profile.username = _.kebabCase(name.join('-'));
+            }
+          }
+          return [req, accessToken, refreshToken, profile, next];
         }
       },
       digitalocean: {
