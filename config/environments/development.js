@@ -51,6 +51,15 @@ export default (config) => {
           callbackURL: '/auth/github/callback'
         }
       },
+      facebook: {
+        protocol: 'oauth2',
+        initialize: {
+          //scope: ['user'],
+          clientID: config.env.FACEBOOK_CLIENT_ID,
+          clientSecret: config.env.FACEBOOK_CLIENT_SECRET,
+          callbackURL: '/auth/facebook/callback'
+        }
+      },
       digitalocean: {
         protocol: 'oauth2',
         initialize: {
