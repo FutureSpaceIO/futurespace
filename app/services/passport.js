@@ -252,7 +252,9 @@ export default (app, config) => {
               if (!__passport) {
                 console.log('!passport')
                 let [__user, created] = yield UserModel.findOrCreate({
-                  where: user
+                  where: {
+                    $or: user
+                  }
                 });
                 query.user_id = __user.id;
                 query.profile = profile._json;
