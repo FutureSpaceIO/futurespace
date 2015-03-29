@@ -198,7 +198,7 @@ export default (app, config) => {
 
     connect: {
       value: function(req, query, profile, next) {
-        console.log(profile);
+        console.log(profile.username, profile.displayName, profile.name, profile.email);
         var user = {},
           provider;
 
