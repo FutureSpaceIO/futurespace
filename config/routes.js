@@ -3,6 +3,8 @@ export default (routeMapper) => {
 
   routeMapper
 
+    .root('welcome#index')
+
     .get('login', { to: 'auth#login' })
 
     .get('signup', { to: 'auth#signup' })
