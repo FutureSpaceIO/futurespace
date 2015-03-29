@@ -67,7 +67,7 @@ export default (config) => {
           if (!profile.username) {
             if(profile.displayName) {
               profile.username = _.kebabCase(profile.displayName);
-            } else (profile.name) {
+            } else if (profile.name) {
               let name = _.compact(_.pick(profile.name, 'givenName', 'middleName',  'familyName'));
               profile.username = _.kebabCase(name.join('-'));
             }
