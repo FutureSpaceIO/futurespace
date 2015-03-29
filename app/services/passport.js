@@ -47,7 +47,7 @@ export default (app, config) => {
             salt: salt,
             password_hash: password_hash
           });
-          yield done(null, user);
+          yield done(null, user.get());
         };
       },
 
@@ -135,7 +135,10 @@ export default (app, config) => {
     loadStrategies: {
       value: function() {
         let defaultOptions = {
-          passReqToCallback: true
+          passReqToCallback: true,
+          customHeaders: {
+            'User-Agent': config.get('site.host')
+          }
         };
         Object.keys(this.strategies).forEach((key) => {
           let options = this.strategies[key].initialize;
@@ -157,7 +160,10 @@ export default (app, config) => {
               default:
                 _.defaults(options, defaultOptions);
                 var protocol = this.strategies[key].protocol;
-                var baseUrl = config.get('site.protocol') + '://' + config.get('site.host') + ':' + config.get('site.port');
+                var baseUrl = config.get('site.protocol') + '://' + config.get('site.host');
+                if (config.env.LOCALLY) {
+                  baseUrl += ':' + config.get('site.port');
+                }
                 switch (protocol) {
                   case 'oauth':
                   case 'oauth2':
@@ -227,7 +233,9 @@ export default (app, config) => {
           return next(new Error('Neither a username or email was available'));
         }
 
-        console.log(query, provider)
+        console.log(query, provider, profile);
+        console.log('req.user', req.user);
+        console.log('user', user);
         co(function*() {
             let __passport = yield PassportModel.findOne({
               where: {
@@ -236,13 +244,13 @@ export default (app, config) => {
               }
             });
             if (!req.user) {
-              console.log('!req.user')
+                console.log('!req.user')
                 // Scenario: A new user is attempting to sign up using a third-party
                 //           authentication provider.
                 // Action:   Create a new user and assign them a passport.
               if (!__passport) {
                 console.log('!passport')
-                let __user = yield UserModel.findOrCreate({
+                let [__user, created] = yield UserModel.findOrCreate({
                   where: user
                 });
                 query.user_id = __user.id;
@@ -255,7 +263,7 @@ export default (app, config) => {
                 _.defaults(query, user);
                 yield __passport.update(query);
 
-                let __user = yield UserModel.findOne(__passport.user_id);
+                let __user = yield UserModel.findOne(__passport.get('user_id'));
                 next(null, __user);
               }
             } else {
@@ -270,7 +278,7 @@ export default (app, config) => {
               }
               next(null, req.user);
             }
-          }) //.catch(next)
+          }).catch(next)
       }
     },
 
@@ -295,7 +303,7 @@ export default (app, config) => {
     },
 
     endpoint: {
-      value: function(ctx, provider = 'local') {
+      value: function(ctx, provider = 'local', next) {
         let strategies = this.strategies;
         if (!_.has(strategies, provider)) {
           return function* redirectToLogin() {
@@ -303,8 +311,7 @@ export default (app, config) => {
           };
         }
 
-        let options = strategies[provider] && strategies[provider].authenticate || Object.create(null);
-        return this.authenticate(provider, options);
+        return this.authenticate(provider, next);
       }
     },
 

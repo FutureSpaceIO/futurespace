@@ -93,6 +93,7 @@ export default (sequelize, DataTypes) => {
   }, {
     tableName: 'passports',
     underscored: true,
+    deletedAt: 'deleted_at',
     paranoid: true,
     classMethods: {
       associate: function(models) {

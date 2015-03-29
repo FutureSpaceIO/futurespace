@@ -29,9 +29,9 @@ export default {
   },
 
   // endpoint GET /auth/:provider
-  * provider() {
+  * provider(next) {
     let passport = this.getService('passport');
-    yield passport.endpoint(this, this.params.provider);
+    yield passport.endpoint(this, this.params.provider, next);
   },
 
   // endpoint GET   /auth/github
@@ -44,6 +44,7 @@ export default {
     let passport = this.getService('passport');
     try {
       yield* passport.callback(this, provider, action, function*(err, user, info) {
+        console.log(err, user, info);
         if (user) {
           yield ctx.login(user);
           return ctx.redirect('/');
