@@ -226,9 +226,9 @@ export default (app, config) => {
         if (_.has(profile, 'username')) {
           user.username = profile.username;
         } else if(profile.displayName || profile.name) { // Facebook remove the `username` field in the latest API.
-          user.name = _.kebabCase(profile.name || profile.displayName);
+          user.username = _.kebabCase(profile.displayName || profile.name);
         } else if(user.email) { // Facebook remove the `username` field in the latest API.
-          user.name = _.kebabCase(user.email.split('@')[0]);
+          user.username = _.kebabCase(user.email.split('@')[0]);
         }
 
         // If neither an email or a username was available in the profile, we don't
