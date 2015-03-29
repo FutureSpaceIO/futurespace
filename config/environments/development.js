@@ -54,7 +54,7 @@ export default (config) => {
       facebook: {
         protocol: 'oauth2',
         initialize: {
-          scope: ['email'],
+          scope: ['email', 'public_profile'],
           clientID: config.env.FACEBOOK_CLIENT_ID,
           clientSecret: config.env.FACEBOOK_CLIENT_SECRET,
           callbackURL: '/auth/facebook/callback'
