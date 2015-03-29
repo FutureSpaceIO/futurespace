@@ -217,18 +217,14 @@ export default (app, config) => {
 
         // If the profile object contains a list of emails, grab the first one and
         // add it to the user.
-        if (_.has(profile, 'emails')) {
+        if (profile.emails) {
           user.email = profile.emails[0].value;
-        } else if (_.has(profile, 'email')) {
+        } else if (profile.email) {
           user.email = profile.email;
         }
         // If the profile object contains a username, add it to the user.
-        if (_.has(profile, 'username')) {
+        if (profile.username) {
           user.username = profile.username;
-        } else if(profile.displayName || profile.name) { // Facebook remove the `username` field in the latest API.
-          user.username = _.kebabCase(profile.displayName || profile.name);
-        } else if(user.email) { // Facebook remove the `username` field in the latest API.
-          user.username = _.kebabCase(user.email.split('@')[0]);
         }
 
         // If neither an email or a username was available in the profile, we don't
