@@ -84,13 +84,12 @@ export default (app, config) => {
             let user = yield UserModel.findByUsernameOrEmail(identifier);
             // Make sure user set the password.
             // If not, notify him to set password.
-            if (user
-              && ((let { password_hash, salt } = user; password_hash))
-              && yield UserModel.compare(password_hash, password, salt)) {
-              return user;
-            } else {
-              throw new Error('Password or identifier wrong.');
+            if (user && user.password_hash) {
+              let { password_hash, salt } = user;
+              let verified = UserModel.compare(password_hash, password, salt);
+              if (verified) return user;
             }
+            throw new Error('Password or Email/Username wrong.');
           })
           .then((user) => {
             done(null, user);
