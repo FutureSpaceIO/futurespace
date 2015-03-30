@@ -7,9 +7,9 @@ export default (routeMapper) => {
 
     .get('login', { to: 'auth#login' })
 
-    .get('signup', { to: 'auth#signup' })
+    .get('join', { to: 'auth#signup' })
 
-    .get('signout', { to: 'auth#signout' })
+    .get('logout', { to: 'auth#signout' })
 
     //.get('forgot')
 

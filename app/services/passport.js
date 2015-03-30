@@ -141,11 +141,8 @@ export default (app, config) => {
           }
         };
         Object.keys(this.strategies).forEach((key) => {
-          let options = this.strategies[key].initialize;
-          let filter = this.strategies[key].filter;
-          let Strategy;
+          let { options, filter, Strategy } = this.strategies[key];
           try {
-            Strategy = require(`passport-${key}`).Strategy;
             switch (key) {
               case 'local':
                 _.defaults(options, defaultOptions, {
@@ -184,6 +181,7 @@ export default (app, config) => {
                 ));
             }
           } catch (e) {
+            console.log(e.stack)
             app.logger.error(`Missing passport-${key}.`);
           }
         });

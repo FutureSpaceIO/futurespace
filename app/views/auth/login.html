@@ -4,21 +4,20 @@
 <div class="row">
   <div class="auth-page">
     {% if errors && errors.length %}
-    <div class="contextual">
+    <div class="flashes">
       {% for error in errors %}
-      <p class="bg-danger">{{ error.message }}</p>
+      <div class="alert alert-danger" role="alert">{{ error.message }}</div>
       {% endfor %}
     </div>
     {% endif %}
 
-    <h2>FutureSpace.IO</h2>
-    <h5 class="text-center">Sign in with:</h6>
+    <h2 class="text-center">Log in</h2>
     {% if providers %}
     <div class="center-block">
       {% for provider in providers %}
-      <a class="btn btn-default btn-block text-capitalize" href="/auth/{{provider | lower }}" role="button">
+      <a class="btn btn-block btn-lg btn-{{ provider | lower }} btn-social" href="/auth/{{provider | lower }}" role="button">
         <i class="fa fa-{{provider | lower }}"></i>
-        {{provider}}
+        with <span class="text-capitalize">{{provider}}</</span>
       </a>
       {% endfor %}
     </div>
@@ -41,7 +40,7 @@
       <div class="text-center">
         <a href="#">I forgot my password</a>
         |
-        <a href="/signup">Create New Account</a>
+        <a href="/join">Create New Account</a>
       </div>
     </form>
   </div>
