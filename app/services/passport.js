@@ -39,15 +39,23 @@ export default (app, config) => {
           let o = _.pick(this.request.body, 'email', 'username', 'password');
           let result = UserModel.validate(o);
           if (result.error) throw result.error;
-          let salt = yield UserModel.salt();
-          let password_hash = yield UserModel.hash(o.password, salt);
-          let user = yield UserModel.create({
-            username: o.username,
-            email: o.email,
-            salt: salt,
-            password_hash: password_hash
+          let [user, created] = yield UserModel.findOrCreate({
+            where: {
+              username: o.username,
+              email: o.email
+            }
           });
-          yield done(null, user.get());
+          if (created) {
+            let salt = yield UserModel.salt();
+            let password_hash = yield UserModel.hash(o.password, salt);
+            yield user.update({
+              password_hash: password_hash,
+              salt: salt
+            });
+            yield done(null, user.get());
+            return;
+          }
+          yield done(new Error('There were problems creating your account.'));
         };
       },
 

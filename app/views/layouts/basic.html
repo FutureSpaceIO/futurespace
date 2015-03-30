@@ -36,8 +36,12 @@
 </ul>
  -->
           <div class="nav navbar-nav navbar-right">
+            {% if user %}
+            <a class="btn btn-default navbar-btn btn-sm" role="button" href="/logout">Sign out</a>
+            {% else %}
             <a class="btn btn-success navbar-btn btn-sm" role="button" href="/join">Sign up</a>
             <a class="btn btn-default navbar-btn btn-sm" role="button" href="/login">Log in</a>
+            {% endif %}
           </div>
         </div>
         <!-- /.navbar-collapse -->

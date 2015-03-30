@@ -141,7 +141,7 @@ export default (sequelize, DataTypes) => {
           username: joi.string().regex(/^\w[\w-]+$/).min(3).max(30).required(),
           //email: joi.string().regex(/^([\w_\.\-\+])+\@([\w\-]+\.)+([\w]{2,10})+$/).email({minDomainAtoms: 1}).min(5).max(256).required(),
           email: joi.string().email({ minDomainAtoms: 2 }).min(5).max(256).required(),
-          password: joi.string().min(5).max(200).required()
+          password: joi.string().min(7).max(200).required()
         });
       },
 
