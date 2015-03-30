@@ -251,11 +251,14 @@ export default (app, config) => {
                 // Action:   Create a new user and assign them a passport.
               if (!__passport) {
                 console.log('!passport')
-                let [__user, created] = yield UserModel.findOrCreate({
+                let __user = yield UserModel.findOne({
                   where: {
                     $or: user
                   }
                 });
+                if (!__user) {
+                  __user = yield UserModel.create(user);
+                }
                 query.user_id = __user.id;
                 query.profile = profile._json;
                 _.defaults(query, user);
