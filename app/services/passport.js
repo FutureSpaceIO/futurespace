@@ -82,7 +82,11 @@ export default (app, config) => {
       login: function(req, identifier, password, done) {
         co(function*() {
             let user = yield UserModel.findByUsernameOrEmail(identifier);
-            if (user && yield UserModel.compare(user.password_hash, password, user.salt)) {
+            // Make sure user set the password.
+            // If not, notify him to set password.
+            if (user
+              && ((let { password_hash, salt } = user; password_hash))
+              && yield UserModel.compare(password_hash, password, salt)) {
               return user;
             } else {
               throw new Error('Password or identifier wrong.');
