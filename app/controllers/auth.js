@@ -76,7 +76,7 @@ export default {
       ctx.flash('error', err);
       switch (action) {
         case 'register':
-          ctx.redirect('/signup');
+          ctx.redirect('/join');
           break;
         case 'disconnect':
           ctx.redirect('back');
