@@ -15,7 +15,7 @@ export default (app, config) => {
   });
 
   passport.deserializeUser((id, done) => {
-    UserModel.find({
+    UserModel.findOne({
       where: {
         id: id
       },
@@ -249,11 +249,8 @@ export default (app, config) => {
                 // Action:   Create a new user and assign them a passport.
               if (!__passport) {
                 console.log('!passport')
-                let __user = yield UserModel.findOne({
-                  where: {
-                    $or: user
-                  }
-                });
+                // Don't use `username` to search, Unsafe.
+                let __user = yield UserModel.findByEmail(user.email);
                 if (!__user) {
                   __user = yield UserModel.create(user);
                 }

@@ -54,7 +54,7 @@ export default (config) => {
             if(profile.displayName) {
               profile.username = _.kebabCase(profile.displayName);
             } else if (profile.name) {
-              let name = _.compact(_.pick(profile.name, 'givenName', 'middleName',  'familyName'));
+              let name = _.compact(_.pick(profile.name, 'givenName', 'familyName'));
               profile.username = _.kebabCase(name.join('-'));
             }
           }
@@ -69,6 +69,17 @@ export default (config) => {
           clientID: config.env.GOOGLE_CLIENT_ID,
           clientSecret: config.env.GOOGLE_CLIENT_SECRET,
           callbackURL: '/auth/google/callback'
+        },
+        filter: (req, accessToken, refreshToken, profile, next) => {
+          if (!profile.username) {
+            if (profile.nickname) {
+              profile.username = _.kebabCase(profile.nickname);
+            } else if (profile.name) {
+              let name = _.compact(_.pick(profile.name, 'givenName', 'familyName'));
+              profile.username = _.kebabCase(name.join('-'));
+            }
+          }
+          return [req, accessToken, refreshToken, profile, next];
         }
       },
       twitter: {
