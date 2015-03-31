@@ -31,6 +31,13 @@
   .btn-github:hover {
     background: #2b2b2b; }
 
+.avatar {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1;
+  vertical-align: middle;
+  border-radius: 3px; }
+
 body {
   padding-top: 70px;
   font: 13px/1.4 "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; }
