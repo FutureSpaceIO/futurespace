@@ -38,7 +38,7 @@
  -->
           <div class="nav navbar-nav navbar-right">
             {% if user %}
-            <a class="btn navbar-btn navbar-link name">
+            <a class="btn navbar-btn navbar-link name" href="/@{{ user.username }}">
               <img class="avatar" width="20" height="20" src="//www.gravatar.com/avatar/{{ user.emailHash }}?size=40" />
               <span>{{ user.username }}</span>
             </a>
