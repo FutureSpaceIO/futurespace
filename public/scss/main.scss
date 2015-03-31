@@ -13,12 +13,12 @@
 }
 
 .btn-facebook {
-  $color: #3b5998;
+  $color: #536da4;
   background: $color;
   border: 1px solid $color;
 
   &:hover {
-    background: #2d4373;
+    background: #4b6294;
   }
 }
 
@@ -33,12 +33,12 @@
 }
 
 .btn-google {
-  $color: #dd4b39;
+  $color: #d75e4e;
   background: $color;
   border: 1px solid $color;
 
   &:hover {
-    background: #c23321;
+    background: #d24836;
   }
 }
 
@@ -56,6 +56,7 @@
 
 body {
   padding-top: 70px;
+  font: 13px/1.4 "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .navbar {

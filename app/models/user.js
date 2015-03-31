@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { pbkdf2, joi } from 'trek/lib/king';
 
 export default (sequelize, DataTypes) => {
@@ -147,10 +148,20 @@ export default (sequelize, DataTypes) => {
 
       validate(object) {
         return joi.validate(object, User.registerSchema, { abortEarly: false });
+      },
+
+      emailHash(email) {
+        return crypto.createHash("md5")
+          .update(str);
+          .hash.digest("hex");
       }
     },
 
-    instanceMethods: {},
+    instanceMethods: {
+      emailHah: function () {
+        return User.emailHash(this.email);
+      }
+    },
 
     hooks: {}
   });
