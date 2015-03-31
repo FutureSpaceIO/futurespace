@@ -2,7 +2,7 @@ import crypto from 'crypto';
 import { pbkdf2, joi } from 'trek/lib/king';
 
 export default (sequelize, DataTypes) => {
-  const User = sequelize.define("User", {
+  const User = sequelize.define('User', {
 
     username: {
       type: DataTypes.STRING(30),
@@ -114,15 +114,25 @@ export default (sequelize, DataTypes) => {
         } else {
           where.username = identifier;
         }
-        return User.find({ where: where });
+        return User.find({
+          where: where
+        });
       },
 
       findByEmail(email) {
-        return User.find({ where: { email: email } });
+        return User.find({
+          where: {
+            email: email
+          }
+        });
       },
 
       findByUsername(username) {
-        return User.find({ where: { username: username } });
+        return User.find({
+          where: {
+            username: username
+          }
+        });
       },
 
       salt() {
@@ -151,15 +161,13 @@ export default (sequelize, DataTypes) => {
       },
 
       emailHash(email) {
-        return crypto.createHash("md5")
-          .update(str);
-          .hash.digest("hex");
+        return crypto.createHash('md5').update(str).hash.digest('hex');
       }
     },
 
     instanceMethods: {
-      emailHah: function () {
-        return User.emailHash(this.email);
+      emailHash() {
+        return User.emailHash(this.get('email'));
       }
     },
 
