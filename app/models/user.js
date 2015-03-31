@@ -161,7 +161,7 @@ export default (sequelize, DataTypes) => {
       },
 
       emailHash(email) {
-        return crypto.createHash('md5').update(str).hash.digest('hex');
+        return crypto.createHash('md5').update(email).digest('hex');
       }
     },
 

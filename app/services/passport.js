@@ -21,7 +21,9 @@ export default (app, config) => {
       },
     }).done((err, user) => {
       if (user) {
+        let emailHash = user.emailHash();
         user = user.toJSON();
+        user.emailHash = emailHash;
         // Ignores password, password_hash, salt fileds into the session.
         delete user.password_hash;
         delete user.salt;
