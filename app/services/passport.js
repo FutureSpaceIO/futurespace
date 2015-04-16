@@ -2,9 +2,9 @@ import url from 'url';
 import _ from 'lodash-node';
 import chalk from 'chalk';
 import co from 'co';
+import passport from 'passport';
 
 export default (app, config) => {
-  let passport = app.getService('passport');
   let models = app.getService('sequelize');
   let UserModel = models.User;
   let PassportModel = models.Passport;

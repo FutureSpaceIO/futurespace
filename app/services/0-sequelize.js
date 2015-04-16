@@ -7,8 +7,7 @@ import Sequelize from 'sequelize';
 export default (app, config) => {
   let sequelize     = null;
   let env           = app.env;
-  let dbConfigPath  = config.paths.get('config/database').path;
-  let dbConfig      = require(dbConfigPath)[env];
+  let dbConfig      = config.get('database');
   if (dbConfig.logging) dbConfig.logging = app.logger.info;
   let url           = dbConfig.url;
   delete dbConfig.url;
@@ -22,11 +21,11 @@ export default (app, config) => {
       dbConfig
     );
   }
-  let modelsPath    = config.paths.get('app/models').path;
+  let modelsPath    = config.paths.get('app/models');
   let db = Object.create(null);
 
   db.promise = co(function* () {
-      let files = config.paths.get('app/models').existent;
+      let files = config.paths.get('app/models');
       files
         .forEach((file) => {
           try {

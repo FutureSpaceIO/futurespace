@@ -1,5 +1,6 @@
 import crypto from 'crypto';
-import { pbkdf2, joi } from 'trek/lib/king';
+import joi from 'joi';
+import pbkdf2 from 'trek-utils/lib/pbkdf2';
 
 export default (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
