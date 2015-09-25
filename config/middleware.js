@@ -6,6 +6,12 @@ export default (app, config) => {
   const middlewareConfig = config.get('middleware') || Object.create(null)
 
 
+  // logger for query
+  if (Trek.isDevelopment) {
+    app.use(require('koa-logger')())
+  }
+
+
   // bodyparser
   app.use(require('koa-bodyparser')(middlewareConfig.bodyparser))
 
