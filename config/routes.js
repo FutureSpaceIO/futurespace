@@ -1,0 +1,2 @@
+
+get('/', { to: 'welcome#index' })

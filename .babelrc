@@ -1,0 +1,9 @@
+{
+  "loose": true,
+  "blacklist": [
+    "regenerator",
+    "es6.constants",
+    "es6.tailCall",
+    "es6.templateLiterals"
+  ]
+}
