@@ -50,7 +50,7 @@ export default (app, config) => {
     session,
     middlewareConfig.session,
     {
-      store: Trek.isProduction && require('koa-redis')(store)
+      //store: Trek.isProduction && require('koa-redis')(store)
     }
   )
   app.use(require('koa-generic-session')(session))
