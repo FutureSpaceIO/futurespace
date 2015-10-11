@@ -1,3 +1,5 @@
+import nunjucks from 'nunjucks'
+
 /**
  * Middleware
  */
@@ -5,6 +7,21 @@ export default (app, config) => {
 
   const middlewareConfig = config.get('middleware') || Object.create(null)
 
+  const publicFolder = app.paths.get('public', true)
+
+  app.static('/bower_components', `${publicFolder}/bower_components`)
+  app.static('/scripts', `${publicFolder}/scripts`)
+  app.static('/styles', `${publicFolder}/styles`)
+  app.static('/images', `${publicFolder}/images`)
+
+  // view render
+  app.engine('html', function render(view, options) {
+    return new Promise((resolve, reject) => {
+      nunjucks.render(view, (err, res) => {
+      err ? reject(err) : resolve(res)
+      })
+    })
+  })
 
   // logger for query
   if (Trek.isDevelopment) {

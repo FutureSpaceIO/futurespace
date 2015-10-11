@@ -1,13 +1,9 @@
-import Trek from 'trek';
+import Trek from 'trek'
 
-const app = new Trek(__dirname);
-
-app.get('/', function* (next) {
-  this.body = 'Hello Trek.js!';
-});
+const app = new Trek(__dirname)
 
 app.on('error', function (err, context) {
-  app.logger.error(err);
-});
+  app.logger.error(err)
+})
 
-app.run();
+app.run()

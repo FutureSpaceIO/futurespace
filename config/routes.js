@@ -1,2 +1,2 @@
 
-get('/', { to: 'welcome#index' })
+get('/', { to: 'site#index' })

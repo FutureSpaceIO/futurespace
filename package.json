@@ -14,6 +14,7 @@
     "koa-logger": "^1.*",
     "koa-methodoverride": "^1.*",
     "koa-redis": "^1.*",
+    "nunjucks": "^2.1.0",
     "trek": "trekjs/trek"
   },
   "devDependencies": {
