@@ -37,6 +37,7 @@ a {
 html {
     font: 14px/1.5 "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #444b58;
+    color: #2ecc71;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -206,6 +207,7 @@ ul, li {
 
 .future-space .space-gray-bg {
     background: rgba(46,48,58,0.96);
+    background: #2ecc71;
     color: #fff;
 }
 
@@ -309,6 +311,7 @@ ul, li {
 
 .contact-form-wrap .contact-form .input-item .btn {
     background: #3795ff;
+    background: #2ecc71;
     color: #fff;
     cursor: pointer;
     line-height: 40px;
@@ -337,7 +340,11 @@ ul, li {
 
     .product-nav>ul {
         float: none;
-        display: none
+        display: none;
+    }
+
+    .product-nav>.active + ul {
+        display: block;
     }
 
     nav,nav li,.main-footer small,.support-nav.toc li {
