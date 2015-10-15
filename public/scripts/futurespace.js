@@ -38,5 +38,5 @@ var FS = {
 (function(doc) {
   doc.addEventListener("DOMContentLoaded", function() {
     FS.init();
- }, false);
+  }, false);
 })(document);
