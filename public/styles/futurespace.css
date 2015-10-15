@@ -72,7 +72,7 @@ ul, li {
 }
 
 .wrapper {
-  max-width: 61.250rem;
+  max-width: 75.385rem;
   margin: 0 auto
 }
 
@@ -101,7 +101,11 @@ ul, li {
 }
 
 .main-header {
-  background: none;
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  left: 0;
+  right: 0;
   background-color: transparent;
 }
 
@@ -206,8 +210,51 @@ ul, li {
 }
 
 .first {
+  position: relative;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  box-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  height: 100vh;
+  padding-top: 1.5625em;
+}
+
+.first .scroll {
+  position: absolute;
+  bottom: 2.8125em;
+  left: 0;
+  margin-top: 0;
+
+  color: #ffffff;
+  display: block;
+  font-size: 0.75em;
+  font-weight: bold;
+  margin-top: 2.8125em;
   text-align: center;
-  height: 540px;
+  width: 100%;
+}
+
+.first .scroll i {
+  display: block;
+  font-size: 1.8em;
+  margin-bottom: 0.3125em;
 }
 
 .future-space .space-gray-bg {
