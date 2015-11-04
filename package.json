@@ -15,12 +15,13 @@
     "koa-methodoverride": "^1.*",
     "koa-redis": "^1.*",
     "nunjucks": "^2.1.0",
-    "trek": "trekjs/trek"
+    "transwarp": "github:trekjs/transwarp",
+    "trek": "trekjs/trek#koa-2"
   },
   "devDependencies": {
     "browser-sync": "^2.*",
     "gulp": "^3.*",
-    "gulp-load-plugins": "latest",
+    "gulp-load-plugins": "^1.*",
     "gulp-watch": "^4.*"
   },
   "engines": {
