@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "babel": "^5.*",
+    "co": "^4.6.0",
     "koa-bodyparser": "^2.*",
     "koa-compress": "^1.*",
     "koa-generic-session": "^1.*",
@@ -26,5 +27,25 @@
   },
   "engines": {
     "node": ">= 4"
+  },
+  "babel": {
+    "stage": 0,
+    "optional": [
+      "es7.asyncFunctions",
+      "es7.classProperties"
+    ],
+    "blacklist": [
+      "es6.arrowFunctions",
+      "es6.blockScoping",
+      "es6.constants",
+      "es6.forOf",
+      "es6.properties.computed",
+      "es6.properties.shorthand",
+      "es6.regex.sticky",
+      "es6.regex.unicode",
+      "es6.tailCall",
+      "es6.templateLiterals",
+      "regenerator"
+    ]
   }
 }

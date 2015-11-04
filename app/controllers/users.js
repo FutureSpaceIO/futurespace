@@ -1,8 +1,8 @@
 
 export default {
 
-  * index(next) {},
+  index(ctx, next) {},
 
-  * show(next) {}
+  show(ctx, next) {}
 
 }
