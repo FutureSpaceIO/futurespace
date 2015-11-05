@@ -16,14 +16,25 @@
     "koa-methodoverride": "^1.*",
     "koa-redis": "^1.*",
     "nunjucks": "^2.1.0",
+    "pg": "^4.4.3",
     "transwarp": "github:trekjs/transwarp",
     "trek": "trekjs/trek#koa-2"
   },
   "devDependencies": {
+    "autoprefixer": "^6.0.3",
     "browser-sync": "^2.*",
+    "cssnano": "^3.3.2",
+    "del": "^2.0.2",
     "gulp": "^3.*",
+    "gulp-babel": "^5.3.0",
+    "gulp-concat": "^2.6.0",
     "gulp-load-plugins": "^1.*",
-    "gulp-watch": "^4.*"
+    "gulp-postcss": "^6.0.1",
+    "gulp-sass": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.2",
+    "gulp-watch": "^4.*",
+    "node-sass": "^3.4.1"
   },
   "engines": {
     "node": ">= 4"

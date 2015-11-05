@@ -14,6 +14,10 @@ export default (app, config) => {
   app.static('/styles', `${publicFolder}/styles`)
   app.static('/images', `${publicFolder}/images`)
 
+  if (Trek.isDevelopment) {
+    nunjucks.configure({ noCache: true })
+  }
+
   // view render
   app.engine('html', function render(view, options) {
     return new Promise((resolve, reject) => {
