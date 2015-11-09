@@ -1,4 +1,6 @@
 import nunjucks from 'nunjucks'
+import locale from 'koa-locale'
+import i18n from 'koa-i18n'
 
 /**
  * Middleware
@@ -21,7 +23,7 @@ export default (app, config) => {
   // view render
   app.engine('html', function render(view, options) {
     return new Promise((resolve, reject) => {
-      nunjucks.render(view, (err, res) => {
+      nunjucks.render(view, options, (err, res) => {
       err ? reject(err) : resolve(res)
       })
     })
@@ -65,5 +67,14 @@ export default (app, config) => {
   if (compress) {
     app.use(require('koa-compress')(compress))
   }
+
+  // i18n & locale
+  locale(app, 'lang')
+  app.use(i18n(app, {
+    directory: `${config.root}/config/locales`,
+    extension: '.json',
+    locales: ['zh-CN', 'en'],
+    modes: ['query', 'cookie']
+  }))
 
 }

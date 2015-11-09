@@ -10,7 +10,7 @@
   <title>FutureSpace · </title>
   <meta name="author" content="FutureSpace Studio">
   <meta name="keywords" content="FutureSpace, Web developer, Startup tech solutions">
-  <meta name="description" content="">
+  <meta name="description" content="{{ __('description') }}">
   <meta name="copyright" content="@ 2015 FutureSpace.io Inc." />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" media="all" href="/styles/app.min.css">
@@ -49,55 +49,54 @@
           </header>
         </div>
       </div>
-      <a class="scroll" data-role="scroll-trigger" href="#about-us"><i class="fa fa-chevron-down"></i>
-</a>
+      <a class="scroll" data-role="scroll-trigger" href="#about-us"><i class="fa fa-chevron-down"></i></a>
     </section>
 
     <section id="about-us" class="section">
       <div class="wrapper">
         <h2 class="sub-title">Who We Are</h2>
-        <p class="description"></p>
+        <p class="description">{{ __('whoweare') }}</p>
       </div>
     </section>
 
     <section class="section space-gray-bg">
       <div class="wrapper">
         <h3 class="sub-title">What We Made</h3>
-        <p class="description"></p>
+        <p class="description">{{ __('whatwemade') }}</p>
       </div>
     </section>
 
     <section class="section">
       <div class="wrapper">
         <h4 class="sub-title">What We Think</h4>
-        <p class="description"></p>
+        <p class="description">{{ __('whatwethink') }}</p>
       </div>
     </section>
 
     <section id="contact-us" class="section ">
       <div class="wrapper">
         <h5 class="sub-title">Contact Us</h5>
-        <!-- <p class="description"></p> -->
+        <p class="description">{{ __('contactus') }}</p>
         <div class="contact-form-wrap">
           <a href="mailto:futurespace.io@gmail.com">futurespace.io@gmail.com</a>
           <!--form action="/contact" method="post" class="contact-form">
-            <p class="input-item">
+          <p class="input-item">
             <label for=""></label>
             <input type="text" name="username" placeholder="username">
-            </p>
-            <p class="input-item">
+          </p>
+          <p class="input-item">
             <label for=""></label>
             <input type="text" name="email" placeholder="email">
-            </p>
-            <p class="input-item">
+          </p>
+          <p class="input-item">
             <label for=""></label>
             <textarea name="project" id="" cols="30" rows="10" placeholder="your project"></textarea>
-            </p>
-            <p class="input-item">
+          </p>
+          <p class="input-item">
             <label for=""></label>
             <input type="submit" class="btn">
-            </p>
-            </form-->
+          </p>
+          </form-->
         </div>
       </div>
     </section>
@@ -113,6 +112,10 @@
             <li><a href="https://twitter.com/FutureSpaceIO">Twitter</a></li>
           </ul>
         </nav>
+        <ol>
+          <li><a href="/?lang=en">English</a></li>
+          <li><a href="/?lang=zh-CN">简体中文</a></li>
+        </ol>
       </div>
     </footer>
   </div>
