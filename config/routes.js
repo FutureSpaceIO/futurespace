@@ -1,2 +1,6 @@
+'use strict'
 
-get('/', { to: 'site#index' })
+const rm = routeMapper
+
+rm
+.get('/', { to: 'site#index' })
