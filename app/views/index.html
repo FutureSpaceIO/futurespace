@@ -7,9 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>FutureSpace · </title>
-  <meta name="author" content="FutureSpace Studio">
-  <meta name="keywords" content="FutureSpace, Web developer, Startup tech solutions">
+  <title>FutureSpace{% if title %} · {{ title }}{% endif %}</title>
+  <meta name="keywords" content="{{ __('keywords') }}">
   <meta name="description" content="{{ __('description') }}">
   <meta name="copyright" content="@ 2015 FutureSpace.io Inc." />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -29,9 +28,9 @@
           </h1>
           <span class="nav-toggle"><i class="fa fa-bars"></i>Menu</span>
           <ul class="clearfix">
-            <li><a href="#" class="">Blog</a></li>
-            <li><a href="#contact-us" class="">Contact us</a></li>
-            <li><a href="#about-us" class="">About us</a></li>
+            <li><a href="#" class="">{{ __('Blog') }}</a></li>
+            <li><a href="#contact-us" class="">{{ __('Contact us') }}</a></li>
+            <li><a href="#about-us" class="">{{ __('About us') }}</a></li>
           </ul>
         </nav>
       </div>
@@ -41,10 +40,10 @@
       <div class="masthead">
         <div class="wrapper">
           <header class="section-header span-11" itemprop="description">
-            <h1 class="pt40 mb40">Professional Technology Solutions for Startup.</h1>
+            <h1 class="pt40 mb40">{{ __('slogan') }}</h1>
             <p class="description mb40"></p>
             <div class="actions">
-              <a href="#" class="button">Let's design, develop & grow your product.</a>
+              <a href="#" class="button"></a>
             </div>
           </header>
         </div>
