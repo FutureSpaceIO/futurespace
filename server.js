@@ -1,8 +1,10 @@
+'use strict'
+
 import Trek from 'trek'
 
 const app = new Trek(__dirname)
 
-app.on('error', function (err, context) {
+app.on('error', (err, context) => {
   app.logger.error(err)
 })
 

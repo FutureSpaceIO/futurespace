@@ -4,6 +4,7 @@
   "private": true,
   "description": "Powered by Trek.js",
   "scripts": {
+    "lint": "eslint app config gulpfile.js server.js",
     "start": "babel-node server.js"
   },
   "dependencies": {
@@ -25,7 +26,7 @@
   "devDependencies": {
     "autoprefixer": "^6.1.0",
     "babel-cli": "^6.1.2",
-    "babel-eslint": "^4.1.4",
+    "babel-eslint": "^4.1.5",
     "babel-plugin-external-helpers-2": "^6.0.15",
     "babel-plugin-syntax-export-extensions": "^6.0.14",
     "babel-plugin-transform-es2015-destructuring": "^6.0.18",
@@ -39,6 +40,8 @@
     "browser-sync": "^2.10.0",
     "cssnano": "^3.3.2",
     "del": "^2.0.2",
+    "eslint": "^1.9.0",
+    "eslint-plugin-babel": "^2.1.1",
     "gulp": "^3.*",
     "gulp-babel": "^6.1.0",
     "gulp-concat": "^2.6.0",

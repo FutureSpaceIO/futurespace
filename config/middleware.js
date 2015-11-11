@@ -1,3 +1,5 @@
+'use strict'
+
 import nunjucks from 'nunjucks'
 import locale from 'koa-locale'
 import i18n from 'koa-i18n'
@@ -24,7 +26,7 @@ export default (app, config) => {
   app.engine('html', function render(view, options) {
     return new Promise((resolve, reject) => {
       nunjucks.render(view, options, (err, res) => {
-      err ? reject(err) : resolve(res)
+        err ? reject(err) : resolve(res)
       })
     })
   })
@@ -42,16 +44,17 @@ export default (app, config) => {
   // method-override
   const methodOverride = middlewareConfig.methodoverride
   if (methodOverride) {
-    app.use(require('koa-methodoverride')(methodOverride.getter, methodOverride.options))
+    app.use(require('koa-methodoverride')
+            (methodOverride.getter, methodOverride.options))
   }
 
 
   // session
-  let session = {
+  const session = {
     key: 'trek.sid',
     prefix: 'trek:sess:'
   }
-  let store = middlewareConfig.session && middlewareConfig.session.store
+  const store = middlewareConfig.session && middlewareConfig.session.store
   Object.assign(
     session,
     middlewareConfig.session,
