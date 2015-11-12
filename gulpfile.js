@@ -16,11 +16,11 @@ const paths = {
   ]
 }
 
-gulp.task('clean', function() {
+gulp.task('clean', () => {
   return del(['assets'])
 })
 
-gulp.task('scripts', function() {
+gulp.task('scripts', () => {
   const sourcemaps = plugins.sourcemaps
   const uglify = plugins.uglify
   const concat = plugins.concat
@@ -35,7 +35,7 @@ gulp.task('scripts', function() {
   .pipe(gulp.dest('public/scripts'))
 })
 
-gulp.task('styles', function() {
+gulp.task('styles', () => {
   const sourcemaps = plugins.sourcemaps
   const concat = plugins.concat
   const sass = plugins.sass
@@ -50,4 +50,9 @@ gulp.task('styles', function() {
   .pipe(concat('app.min.css'))
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest('public/styles'))
+})
+
+gulp.task('watch', () => {
+  gulp.watch(paths.scripts, ['scripts'])
+  gulp.watch(paths.styles, ['styles'])
 })

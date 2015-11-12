@@ -5,10 +5,10 @@
 	"whatwemade": "我们设计开发 web 和 iOS App，还有 HTML5 Game 。",
 	"whatwethink": "我们站在巨人的肩旁上，受益于开源，也积极回馈开源。",
 	"contactus": "无论是技术讨论，还是天马星空的创意，都欢迎与我们联系。愿我们都能在分享讨论中进步。",
-
-	"slogan": "让我们助力你的产品，成为设计、开发、成长的推进器。",
-
-  "Blog": "博客",
-  "About us": "关于我们",
-  "Contact us": "联系我们"
+	"slogan": "让我们助力你的产品，成为<em>设计</em>、<em>开发</em>、<em>成长</em>的推进器。",
+	"slogan-subtitle": "专注于简洁，用高质量代码和靠谱的人加速你的产品。",
+	"Blog": "博客",
+	"About us": "关于我们",
+	"Contact us": "联系我们",
+	"Twitter": "推特"
 }

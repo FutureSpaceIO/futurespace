@@ -39,10 +39,10 @@
     <section class="first">
       <div class="masthead">
         <div class="wrapper">
-          <header class="section-header span-11" itemprop="description">
-            <h1 class="pt40 mb40">{{ __('slogan') }}</h1>
-            <p class="description mb40"></p>
-            <div class="actions">
+          <header class="section-header span-11 slogan" itemprop="description">
+            <h2>{{ __('slogan') | safe }}</h2>
+            <p class="description">{{ __('slogan-subtitle') }}</p>
+            <div class="actions" hidden>
               <a href="#" class="button"></a>
             </div>
           </header>
@@ -60,21 +60,21 @@
 
     <section class="section space-gray-bg">
       <div class="wrapper">
-        <h3 class="sub-title">What We Made</h3>
+        <h2 class="sub-title">What We Made</h2>
         <p class="description">{{ __('whatwemade') }}</p>
       </div>
     </section>
 
     <section class="section">
       <div class="wrapper">
-        <h4 class="sub-title">What We Think</h4>
+        <h2 class="sub-title">What We Think</h2>
         <p class="description">{{ __('whatwethink') }}</p>
       </div>
     </section>
 
     <section id="contact-us" class="section ">
       <div class="wrapper">
-        <h5 class="sub-title">Contact Us</h5>
+        <h2 class="sub-title">Contact Us</h2>
         <p class="description">{{ __('contactus') }}</p>
         <div class="contact-form-wrap">
           <a href="mailto:futurespace.io@gmail.com">futurespace.io@gmail.com</a>
@@ -105,10 +105,10 @@
         <nav>
           <small>© 2015 FutureSpace Inc.</small>
           <ul role="navigation">
-            <li><a href="#">Blog</a></li>
-            <li><a href="#contact-us">Contact us</a></li>
-            <li><a href="#about-us">About us</a></li>
-            <li><a href="https://twitter.com/FutureSpaceIO">Twitter</a></li>
+            <li><a href="#">{{ __('Blog') }}</a></li>
+            <li><a href="#contact-us">{{ __('Contact us') }}</a></li>
+            <li><a href="#about-us">{{ __('About us') }}</a></li>
+            <li><a href="https://twitter.com/FutureSpaceIO">{{ __('Twitter') }}</a></li>
           </ul>
         </nav>
         <ol>

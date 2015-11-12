@@ -441,7 +441,7 @@ html {
 }
 
 body {
-  font: 13px/1.4 "Source Sans Pro", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font: 13px/1.4 "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   color: #444b58;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -498,18 +498,6 @@ nav a {
 
 li,ul {
   list-style: none
-}
-
-.pt40 {
-  padding-top: 40px
-}
-
-.mt40 {
-  margin-top: 40px
-}
-
-.mb40 {
-  margin-bottom: 40px
 }
 
 .wrapper {
@@ -617,6 +605,7 @@ li,ul {
 }
 
 .masthead {
+  width: 65%;
   font-size: 1.375rem;
   color: rgba(255,255,255,.65)
 }
@@ -638,16 +627,23 @@ li,ul {
   color: #3795ff
 }
 
-.masthead h1 {
+.masthead h2 {
   font-size: 2.6rem;
-  line-height: 1.1;
   color: #fff;
-  font-weight: 400
+  font-weight: normal 
 }
 
 .description {
   font-size: 16px;
   padding: 0 40px
+}
+
+.slogan h2 {
+  margin-bottom: 0.88889em
+}
+
+.slogan .description {
+  font-size: 1.0em;
 }
 
 .first {
