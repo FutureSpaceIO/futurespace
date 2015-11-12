@@ -434,7 +434,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
@@ -448,7 +450,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a,nav a {
+a,
+nav a {
   text-decoration: none
 }
 
@@ -467,7 +470,8 @@ a {
   background: #4084d0
 }
 
-.clearfix:after,.clearfix:before {
+.clearfix:after,
+.clearfix:before {
   display: table;
   line-height: 0;
   content: ""
@@ -477,14 +481,15 @@ a {
   clear: both
 }
 
-body.future-space {
+.futurespace {
   background: url(/images/bg.png) top center no-repeat fixed #061524;
   background-size: cover;
   -moz-background-size: cover;
   background-color: none
 }
 
-.ir,.main-header {
+.ir,
+.main-header {
   background-color: transparent
 }
 
@@ -492,11 +497,14 @@ nav a {
   color: rgba(255,255,255,.5)
 }
 
-.highlight,.product-nav ul a:focus,.product-nav ul a:hover {
+.highlight,
+.product-nav ul a:focus,
+.product-nav ul a:hover {
   color: #fff
 }
 
-li,ul {
+li,
+ul {
   list-style: none
 }
 
@@ -520,7 +528,9 @@ li,ul {
   text-indent: -999em
 }
 
-.first .scroll,.masthead,.section {
+.first .scroll,
+.masthead,
+.section {
   text-align: center
 }
 
@@ -536,11 +546,12 @@ li,ul {
   right: 0
 }
 
-.first,.masthead {
+.first,
+.masthead {
   position: relative
 }
 
-.main-header>.wrapper {
+.main-header > .wrapper {
   padding-top: 1.1542rem;
   padding-right: 48px;
   padding-left: 48px;
@@ -590,7 +601,9 @@ li,ul {
   border: 1px solid rgba(62,130,208,.4)
 }
 
-.button:active,.button:focus,.button:hover {
+.button:active,
+.button:focus,
+.button:hover {
   border-color: rgba(49,101,160,.4)
 }
 
@@ -599,18 +612,22 @@ li,ul {
   color: #fff
 }
 
-.button.full:active,.button.full:focus,.button.full:hover {
+.button.full:active,
+.button.full:focus,
+.button.full:hover {
   background: #31649e;
   color: #fff
 }
 
 .masthead {
-  width: 65%;
+  width: 80%;
   font-size: 1.375rem;
   color: rgba(255,255,255,.65)
 }
 
-.masthead .button.full:active,.masthead .button.full:focus,.masthead .button.full:hover {
+.masthead .button.full:active,
+.masthead .button.full:focus,
+.masthead .button.full:hover {
   background: #3795ff
 }
 
@@ -619,16 +636,20 @@ li,ul {
   margin: 0 1.25rem
 }
 
-.masthead .button:active,.masthead .button:focus,.masthead .button:hover {
+.masthead .button:active,
+.masthead .button:focus,
+.masthead .button:hover {
   border-color: rgba(56,149,255,.4)
 }
 
-.masthead a:active,.masthead a:focus,.masthead a:hover {
+.masthead a:active,
+.masthead a:focus,
+.masthead a:hover {
   color: #3795ff
 }
 
 .masthead h2 {
-  font-size: 2.6rem;
+  font-size: 1.35em;
   color: #fff;
   font-weight: normal 
 }
@@ -643,7 +664,7 @@ li,ul {
 }
 
 .slogan .description {
-  font-size: 1.0em;
+  font-size: 1em;
 }
 
 .first {
@@ -655,11 +676,19 @@ li,ul {
   justify-content: center;
   -ms-flex-pack: center;
   width: 100%;
-  padding: 7.25em 2.1875em;
+  padding: 7.25em 0.1875em;
   position: relative;
 }
 
 @media screen and (min-width: 41.875em) {
+  .slogan h2 {
+    font-size: 2.375em;
+  }
+
+  .slogan .description {
+    font-size: 1.375em;
+  }
+
   .first {
     height: 100vh;
     padding-top: 1.5625em
@@ -696,18 +725,18 @@ li,ul {
 }
 
 .section .sub-title {
-  font-size: 2.6rem;
+  font-size: 2rem;
 }
 
 .section .description {
   padding-top: 20px
 }
 
-.main-footer>.wrapper {
+.main-footer > .wrapper {
   padding: 2.8125rem .625rem
 }
 
-.support>.main-footer small {
+.support > .main-footer small {
   color: rgba(255,255,255,.8)
 }
 
@@ -734,7 +763,8 @@ li,ul {
   color: #4084d0
 }
 
-.product>.main-footer a:focus,.product>.main-footer a:hover {
+.product > .main-footer a:focus,
+.product > .main-footer a:hover {
   color: #31649e
 }
 
@@ -753,7 +783,8 @@ li,ul {
   margin-bottom: 15px
 }
 
-.contact-form-wrap .contact-form .input-item input,.contact-form-wrap .contact-form .input-item textarea {
+.contact-form-wrap .contact-form .input-item input,
+.contact-form-wrap .contact-form .input-item textarea {
   display: inline-block;
   width: 100%;
   height: 40px;
@@ -804,12 +835,12 @@ li,ul {
     margin-right: 0.3125em;
   }
 
-  .product-nav>ul {
+  .product-nav > ul {
     float: none;
     display: none
   }
 
-  .product-nav>.active+ul {
+  .product-nav > .active + ul {
     display: block
   }
 
@@ -818,11 +849,14 @@ li,ul {
     padding-right: 24px;
   }
 
-  .main-footer small,.support-nav.toc li,nav,nav li {
+  .main-footer small,
+  .support-nav.toc li,
+  nav,
+  nav li {
     font-size: .875rem
   }
 
-  .product-nav>.nav-toggle {
+  .product-nav > .nav-toggle {
     display: block;
     float: right;
     cursor: pointer;
@@ -879,12 +913,13 @@ li,ul {
     padding-right: .625rem
   }
 
-  .main-footer>.wrapper {
+  .main-footer > .wrapper {
     padding-top: 1rem;
     padding-bottom: 1rem
   }
 
-  .main-footer a,.main-footer small {
+  .main-footer a,
+  .main-footer small {
     display: block;
     padding: 1rem 0
   }
@@ -894,7 +929,7 @@ li,ul {
     border-image: linear-gradient(90deg,rgba(230,230,230,0),#e6e6e6 50%,rgba(230,230,230,0) 100%) 4%
   }
 
-  .support>.main-footer small {
+  .support > .main-footer small {
     border-image: linear-gradient(90deg,rgba(230,230,230,0),rgba(230,230,230,.15) 50%,rgba(230,230,230,0) 100%) 5%
   }
 
@@ -909,14 +944,14 @@ li,ul {
     border-bottom: 1px solid rgba(230,230,230,.5)
   }
 
-  .support>.main-footer li {
+  .support > .main-footer li {
     border-image: none;
     border-bottom: 1px solid rgba(230,230,230,.1)
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .main-header>.wrapper {
+  .main-header > .wrapper {
     padding-left: 24px;
     padding-right: 24px;
   }
