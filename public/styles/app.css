@@ -713,7 +713,7 @@ ul {
   margin-bottom: .3125em
 }
 
-.future-space .space-gray-bg {
+.futurespace .space-gray-bg {
   background: rgba(46,48,58,.96);
   color: #fff
 }
@@ -732,17 +732,18 @@ ul {
   padding-top: 20px
 }
 
+#contact-us {
+  background: #f8f9fa;
+}
+
 .main-footer > .wrapper {
   padding: 2.8125rem .625rem
 }
 
-.support > .main-footer small {
-  color: rgba(255,255,255,.8)
-}
-
 .main-footer {
   text-align: right;
-  background: #f8f9fa
+  color: #fff;
+  background-color: rgba(46,48,58,0.96);
 }
 
 .main-footer small {
@@ -760,7 +761,11 @@ ul {
 }
 
 .main-footer a {
-  color: #4084d0
+  color: #fff;
+}
+
+.main-footer .locale {
+  color: rgba(255,255,255,.6);
 }
 
 .product > .main-footer a:focus,
@@ -818,6 +823,17 @@ ul {
   color: #fff;
   cursor: pointer;
   line-height: 40px
+}
+
+.main-footer .langs {
+  padding-top: .3em;
+  font-size: .8em;
+}
+.main-footer .langs li {
+  float: left;
+}
+.main-footer .langs a {
+  display: inline-block;
 }
 
 @media screen and (max-width: 480px) {

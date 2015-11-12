@@ -72,7 +72,7 @@
       </div>
     </section>
 
-    <section id="contact-us" class="section ">
+    <section id="contact-us" class="section">
       <div class="wrapper">
         <h2 class="sub-title">Contact Us</h2>
         <p class="description">{{ __('contactus') }}</p>
@@ -111,10 +111,20 @@
             <li><a href="https://twitter.com/FutureSpaceIO">{{ __('Twitter') }}</a></li>
           </ul>
         </nav>
-        <ol>
-          <li><a href="/?lang=en">English</a></li>
-          <li><a href="/?lang=zh-CN">简体中文</a></li>
-        </ol>
+        <div class="langs">
+          {% set locale = getLocale() %}
+          {% set langs = [['zh-CN', '简体中文'], ['en', 'English']] %}
+          {% for k, l in langs %}
+          {% if k == locale %}
+          <span class="locale">{{ l }}</span>
+          {% else %}
+          <a href="/?lang={{ k }}">{{ l }}</a>
+          {% endif %}
+          {% if not loop.last %}
+          &nbsp;|&nbsp;
+          {% endif %}
+          {% endfor %}
+        </div>
       </div>
     </footer>
   </div>
