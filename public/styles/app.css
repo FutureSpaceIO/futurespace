@@ -543,7 +543,8 @@ ul {
   top: 0;
   z-index: 100;
   left: 0;
-  right: 0
+  right: 0;
+  background-color: #000;
 }
 
 .first,
@@ -552,7 +553,6 @@ ul {
 }
 
 .main-header > .wrapper {
-  padding-top: 1.1542rem;
   padding-right: 48px;
   padding-left: 48px;
   border-width: 0 0 1px;
@@ -876,7 +876,7 @@ ul {
     display: block;
     float: right;
     cursor: pointer;
-    padding: .6rem 0 .6rem .8rem;
+    padding: .8rem 0 .6rem .6rem;
     color: rgba(255,255,255,.9);
     position: relative;
     user-select: none
