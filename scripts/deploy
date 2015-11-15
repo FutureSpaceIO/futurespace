@@ -1,3 +1,3 @@
 #!/bin/bash
 
-git push dokku dev:master
+git push dokku master

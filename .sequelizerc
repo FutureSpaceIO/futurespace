@@ -1,9 +1,0 @@
-var fs = require('fs');
-var path = require('path')
-
-module.exports = {
-  es6: true,
-  config: path.resolve('config', 'database.js'),
-  'models-path': path.resolve('app', 'models'),
-  'migrations-path': path.resolve('db', 'migrate')
-};
