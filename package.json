@@ -21,7 +21,7 @@
     "nunjucks": "^2.1.0",
     "pg": "^4.4.3",
     "transwarp": "github:trekjs/transwarp",
-    "trek": "github:trekjs/trek"
+    "trek": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.1.0",
