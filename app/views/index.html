@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="canonical" href="https://futurespace.io">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>FutureSpace{% if title %} · {{ title }}{% endif %}</title>
+  <meta name="keywords" content="{{ __('keywords') }}">
+  <meta name="description" content="{{ __('description') }}">
+  <meta name="copyright" content="@ 2015 FutureSpace.io Inc." />
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" media="all" href="/styles/app.min.css">
+</head>
+
+<body>
+  <div id="main">
+    <header class="main-header">
+      <div class="wrapper" role="navigation">
+        <nav class="clearfix product-nav">
+          <h1>
+            <a href="/" class="highlight">
+              <span style="display: none;" role="banner" itemprop="brand" class="ir">FutureSpace Inc</span>
+              <span itemprop="name"><i class="text-light">Future</i>Space</span>
+            </a>
+          </h1>
+          <span class="nav-toggle"><i class="fa fa-bars"></i>Menu</span>
+          <ul class="clearfix">
+            <li><a href="#" class="">{{ __('Blog') }}</a></li>
+            <li><a href="#contact-us" class="">{{ __('Contact us') }}</a></li>
+            <li><a href="#about-us" class="">{{ __('About us') }}</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="first futurespace">
+      <div class="masthead">
+        <div class="wrapper">
+          <header class="section-header span-11 slogan" itemprop="description">
+            <h2>{{ __('slogan') | safe }}</h2>
+            <p class="description">{{ __('slogan-subtitle') }}</p>
+            <div class="actions" hidden>
+              <a href="#" class="button"></a>
+            </div>
+          </header>
+        </div>
+      </div>
+      <a class="scroll" data-role="scroll-trigger" href="#about-us"><i class="fa fa-chevron-down"></i></a>
+    </section>
+
+    <section id="about-us" class="section">
+      <div class="wrapper">
+        <h2 class="sub-title">Who We Are</h2>
+        <p class="description">{{ __('whoweare') }}</p>
+      </div>
+    </section>
+
+    <section class="section space-gray-bg">
+      <div class="wrapper">
+        <h2 class="sub-title">What We Made</h2>
+        <p class="description">{{ __('whatwemade') }}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrapper">
+        <h2 class="sub-title">What We Think</h2>
+        <p class="description">{{ __('whatwethink') }}</p>
+      </div>
+    </section>
+
+    <section id="contact-us" class="section">
+      <div class="wrapper">
+        <h2 class="sub-title">Contact Us</h2>
+        <p class="description">{{ __('contactus') }}</p>
+        <div class="contact-form-wrap">
+          <a href="mailto:futurespace.io@gmail.com">futurespace.io@gmail.com</a>
+          <!--form action="/contact" method="post" class="contact-form">
+          <p class="input-item">
+            <label for=""></label>
+            <input type="text" name="username" placeholder="username">
+          </p>
+          <p class="input-item">
+            <label for=""></label>
+            <input type="text" name="email" placeholder="email">
+          </p>
+          <p class="input-item">
+            <label for=""></label>
+            <textarea name="project" id="" cols="30" rows="10" placeholder="your project"></textarea>
+          </p>
+          <p class="input-item">
+            <label for=""></label>
+            <input type="submit" class="btn">
+          </p>
+          </form-->
+        </div>
+      </div>
+    </section>
+
+    <footer class="main-footer" role="contentinfo">
+      <div class="wrapper">
+        <nav>
+          <small>© 2015 FutureSpace Inc.</small>
+          <ul role="navigation">
+            <li><a href="#">{{ __('Blog') }}</a></li>
+            <li><a href="#contact-us">{{ __('Contact us') }}</a></li>
+            <li><a href="#about-us">{{ __('About us') }}</a></li>
+            <li><a href="https://twitter.com/FutureSpaceIO">{{ __('Twitter') }}</a></li>
+          </ul>
+        </nav>
+        <div class="langs">
+          {% set locale = getLocale() %}
+          {% set langs = [['zh-CN', '简体中文'], ['en', 'English']] %}
+          {% for k, l in langs %}
+          {% if k == locale %}
+          <span class="locale">{{ l }}</span>
+          {% else %}
+          <a href="/?lang={{ k }}">{{ l }}</a>
+          {% endif %}
+          {% if not loop.last %}
+          &nbsp;|&nbsp;
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="/scripts/app.min.js"></script>
+</body>
+</html>

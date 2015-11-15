@@ -1,9 +1,11 @@
-import Trek from 'trek';
+'use strict'
 
-var app = new Trek(__dirname);
+import Trek from 'trek'
 
-app.on('error', function (err, context) {
-  app.logger.error(err);
-});
+const app = new Trek(__dirname)
 
-app.run();
+app.on('error', (err, context) => {
+  app.logger.error(err)
+})
+
+app.run(5000)

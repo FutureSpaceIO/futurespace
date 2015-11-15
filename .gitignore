@@ -3,12 +3,13 @@
 node_modules
 bower_components
 npm-debug.log
+coverage
 
 dist
 test/tmp
 .tmp
 
 # .env* files
-.env*
+config/.env*
 !.env.example
 !.env.sample
