@@ -1,8 +1,38 @@
 'use strict'
 
+import User from '../models/User'
+import Test from '../models/Test'
+
+var i = 0
+
 export default {
 
   * index() {
+    const db = this.getService('database')
+
+    const lastUser  = yield this.app.models.User.last()
+    const firstUser = yield User.first()
+    const count     = yield User.count()
+    console.log(firstUser)
+    console.log(lastUser)
+    console.log(count)
+
+    lastUser.set('username', 'hello2007' + (i++))
+    yield lastUser.save()
+    console.log(lastUser)
+
+    const t = new Test({
+      name: firstUser.get('username')
+    })
+    yield t.save()
+    console.log(t)
+
+    yield t.delete()
+    console.log(t)
+
+    //console.log(this.app.models.User.attributes)
+    //console.log(User.db)
+
     //let lang = this.query.lang
     //let langCookie = this.cookies.get('lang')
     //if (lang && lang !== langCookie) {
