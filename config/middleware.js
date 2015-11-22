@@ -33,7 +33,7 @@ export default (app, config) => {
 
   // logger for query
   if (Trek.isDevelopment) {
-    app.use(require('koa-logger')())
+    app.use(require('koa-morgan')('dev'))
   }
 
 

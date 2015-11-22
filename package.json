@@ -8,21 +8,21 @@
     "start": "babel-node server.js"
   },
   "dependencies": {
-    "babel-core": "^6.2.1",
+    "babel-core": "^6.x",
     "co": "^4.6.0",
-    "koa-bodyparser": "^3.0.0",
-    "koa-compress": "^1.*",
-    "koa-generic-session": "^1.10.0",
+    "koa-bodyparser": "^3.x",
+    "koa-compress": "^1.x",
+    "koa-generic-session": "^1.x",
     "koa-i18n": "^1.1.2",
     "koa-locale": "^1.0.0",
-    "koa-logger": "^2.0.0",
-    "koa-methodoverride": "^1.*",
-    "koa-redis": "^1.*",
-    "nunjucks": "^2.1.0",
+    "koa-methodoverride": "^1.x",
+    "koa-morgan": "^1.0.0-alpha.1",
+    "koa-redis": "^1.x",
+    "nunjucks": "^2.x",
     "pg": "^4.4.3",
     "transwarp": "github:transwarpjs/transwarp",
     "transwarp-postgres": "github:transwarpjs/postgres",
-    "trek": "^1.0.0"
+    "trek": "^1.x"
   },
   "devDependencies": {
     "autoprefixer": "^6.x",
