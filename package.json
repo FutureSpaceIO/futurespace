@@ -13,7 +13,7 @@
     "koa-bodyparser": "^3.x",
     "koa-compress": "^1.x",
     "koa-generic-session": "^1.x",
-    "koa-i18n": "^1.1.2",
+    "koa-i18n": "^1.2.0",
     "koa-locale": "^1.0.0",
     "koa-methodoverride": "^1.x",
     "koa-morgan": "^1.0.0-alpha.1",
