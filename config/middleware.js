@@ -18,6 +18,7 @@ export default (app, config) => {
   app.static('/styles', `${publicFolder}/styles`)
   app.static('/images', `${publicFolder}/images`)
 
+
   if (Trek.isDevelopment) {
     nunjucks.configure({ noCache: true })
   }
@@ -30,6 +31,7 @@ export default (app, config) => {
       })
     })
   })
+
 
   // logger for query
   if (Trek.isDevelopment) {
@@ -59,7 +61,7 @@ export default (app, config) => {
     session,
     middlewareConfig.session,
     {
-      //store: Trek.isProduction && require('koa-redis')(store)
+      store: Trek.isProduction && require('koa-redis')(store)
     }
   )
   app.use(require('koa-generic-session')(session))
