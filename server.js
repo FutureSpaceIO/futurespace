@@ -2,6 +2,9 @@
 
 import Trek from 'trek'
 
+// Enable debug mode.
+Trek.logger.level = 'debug'
+
 const app = new Trek(__dirname)
 app.keys = ['futurespace.io', 'stackmeta.com']
 
