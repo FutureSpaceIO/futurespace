@@ -5,7 +5,7 @@
   "description": "Powered by Trek.js",
   "scripts": {
     "lint": "eslint app config gulpfile.js server.js",
-    "start": "babel-node server.js"
+    "start": "node_modules/.bin/babel-node server.js"
   },
   "dependencies": {
     "babel-core": "6",
