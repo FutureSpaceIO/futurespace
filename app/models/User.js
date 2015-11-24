@@ -56,4 +56,24 @@ export default class User extends Model {
 
   }
 
+  static boot() {
+    this.hooks.saving((ctx, next) => {
+      console.log('User saving')
+      return next()
+    })
+    this.hooks.saved((ctx, next) => {
+      console.log('User saved')
+      return next()
+    })
+    this.hooks.creating((ctx, next) => {
+      console.log('User creating')
+      return next()
+    })
+    this.hooks.created((ctx, next) => {
+      console.log('User created')
+      return next()
+    })
+    console.log('Model: User is booted.')
+  }
+
 }

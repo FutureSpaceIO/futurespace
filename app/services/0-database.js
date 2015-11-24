@@ -8,14 +8,16 @@ export default (app, config) => {
 
   register('postgres', postgres)
 
-  const db = open('postgres', 'postgres://yzyj@192.168.99.100/yizuyijie_dev')
-  // db.logger = app.logger
+  const dsn = config.get('database')
+  const db = open('postgres', dsn)
+  db.logger = app.logger
 
   const models = app.models = Object.create(null)
   app.paths.get('app/models').forEach(m => {
     const Model = Trek.require(`${app.rootPath}/${m}`)
 
     Model.attach(db)
+    Model.boot()
 
     Object.defineProperty(models, Model.name, {
       configurable: true,
@@ -23,6 +25,9 @@ export default (app, config) => {
     })
   })
 
-  return db
+  return db.ping().then(result => {
+    app.logger.debug('DB is already connected.')
+    return db
+  })
 
 }

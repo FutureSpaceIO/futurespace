@@ -10,28 +10,30 @@ export default {
   * index() {
     const db = this.getService('database')
 
-    const lastUser  = yield this.app.models.User.last()
-    const firstUser = yield User.first()
-    const count     = yield User.count()
-    console.log(firstUser)
-    console.log(lastUser)
-    console.log(count)
+    //let result = yield db.exec('SELECT current_database();')
+    //console.log(result)
+    //const lastUser  = yield this.app.models.User.last()
+    //const firstUser = yield User.first()
+    //const count     = yield User.count()
+    //console.log(firstUser)
+    //console.log(lastUser)
+    //console.log(count)
 
-    lastUser.set('username', 'hello2007' + (i++))
-    yield lastUser.save()
-    console.log(lastUser)
+    //lastUser.set('username', 'hells2007' + (i++))
+    //yield lastUser.save()
+    //console.log(lastUser)
 
     const t = new Test({
-      name: firstUser.get('username')
+      name: '2333'
     })
     yield t.save()
-    console.log(t)
+    console.log('ttt', t)
 
     yield t.delete()
     console.log(t)
 
-    //console.log(this.app.models.User.attributes)
-    //console.log(User.db)
+    // console.log(this.app.models.User.attributes)
+    // console.log(User.db)
 
     //let lang = this.query.lang
     //let langCookie = this.cookies.get('lang')
