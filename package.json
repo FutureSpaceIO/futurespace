@@ -21,6 +21,7 @@
     "koa-redis": "^1.x",
     "nunjucks": "^2.x",
     "transwarp": "github:transwarpjs/transwarp",
+    "transwarp-migrate": "0.0.2",
     "transwarp-postgres": "github:transwarpjs/postgres",
     "trek": "github:trekjs/trek"
   },
