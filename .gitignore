@@ -13,3 +13,5 @@ test/tmp
 config/.env*
 !.env.example
 !.env.sample
+
+db/migrations/.migrate
