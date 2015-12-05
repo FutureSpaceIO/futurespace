@@ -23,7 +23,8 @@
     "transwarp": "github:transwarpjs/transwarp",
     "transwarp-migrate": "github:transwarpjs/migrate",
     "transwarp-postgres": "github:transwarpjs/postgres",
-    "trek": "github:trekjs/trek"
+    "trek": "github:trekjs/trek",
+    "trek-cli": "github:trekjs/cli"
   },
   "devDependencies": {
     "autoprefixer": "6",
