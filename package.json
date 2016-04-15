@@ -5,67 +5,51 @@
   "description": "Powered by Trek.js",
   "scripts": {
     "lint": "eslint app config gulpfile.js server.js",
-    "start": "node_modules/.bin/babel-node server.js"
+    "start": "babel-node server.js"
   },
   "dependencies": {
-    "babel-core": "^6",
+    "babel-core": "6",
     "co": "^4",
-    "koa-bodyparser": "^3",
-    "koa-compress": "^1",
-    "koa-generic-session": "^1",
+    "trek": "trekjs/trek",
+    "trek-cli": "trekjs/cli",
+    "koa-bodyparser": "^3.x",
+    "koa-compress": "^1.x",
+    "koa-methodoverride": "^2.x",
+    "koa-morgan": "^1.x",
+    "koa-redis": "^1.x",
+    "koa-generic-session": "^1.x",
     "koa-i18n": "^1",
     "koa-locale": "^1",
-    "koa-methodoverride": "^2",
-    "koa-morgan": "^1",
     "koa-multer": "^1",
-    "koa-redis": "^1",
+    "koa-logger": "^1.x",
     "nunjucks": "^2",
     "transwarp": "github:transwarpjs/transwarp",
     "transwarp-migrate": "github:transwarpjs/migrate",
-    "transwarp-postgres": "github:transwarpjs/postgres",
-    "trek": "github:trekjs/trek",
-    "trek-cli": "github:trekjs/cli"
+    "transwarp-postgres": "github:transwarpjs/postgres"
   },
   "devDependencies": {
     "autoprefixer": "6",
     "babel-cli": "6",
     "babel-eslint": "4",
-    "babel-plugin-transform-es2015-destructuring": "6",
-    "babel-plugin-transform-es2015-modules-commonjs": "6",
-    "babel-plugin-transform-es2015-parameters": "6",
-    "babel-preset-stage-1": "6",
-    "babel-preset-stage-2": "6",
-    "babel-preset-stage-3": "6",
+    "babel-preset-es2015": "6",
     "browser-sync": "2",
+    "eslint": "1",
+    "eslint-plugin-babel": "3",
+    "gulp": "3",
+    "gulp-load-plugins": "1",
+    "gulp-watch": "4",
+    "mocha": "2",
     "cssnano": "3",
     "del": "2",
-    "eslint": "1",
-    "eslint-plugin-babel": "2",
-    "gulp": "3",
     "gulp-babel": "6",
     "gulp-concat": "2",
-    "gulp-load-plugins": "1",
     "gulp-postcss": "6",
     "gulp-sass": "2",
     "gulp-sourcemaps": "1",
     "gulp-uglify": "1",
-    "gulp-watch": "4",
     "node-sass": "3"
   },
   "engines": {
-    "node": ">= 4",
-    "npm": ">= 3"
-  },
-  "babel": {
-    "plugins": [
-      "transform-es2015-destructuring",
-      "transform-es2015-modules-commonjs",
-      "transform-es2015-parameters"
-    ],
-    "presets": [
-      "stage-1",
-      "stage-2",
-      "stage-3"
-    ]
+    "node": ">= 4"
   }
 }
